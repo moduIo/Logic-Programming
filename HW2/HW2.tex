@@ -1,0 +1,86 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{algorithm}% http://ctan.org/pkg/algorithm
+\usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
+\usepackage{mathrsfs}
+
+%SetFonts
+
+%SetFonts
+
+
+\title{CSE505 HW2}
+\author{Tim Zhang}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\section{Interpretations and Models}
+For each of the solutions provided below assume that $D = N$, $zero_\mathscr{I} = 0$, and $s_\mathscr{I} :=$ the successor function over $N$.
+\subsection{Part A}
+
+1. $p_\mathscr{I} = \{n \in N$ $|$ $n$ is even$\}$.\\
+2. $p_\mathscr{I} = N$.
+
+\subsection{Part B}
+
+1. $q_\mathscr{I} = \{n \in N$ $|$ $n$ is odd$\}$.\\
+2. $q_\mathscr{I} = N$.
+
+\subsection{Part C}
+1. $p_\mathscr{I} = N$ and $q_\mathscr{I} = N$.\\
+2. $p_\mathscr{I} = \{n \in N$ $|$ $n$ is even$\}$ and $q_\mathscr{I} = \{n \in N$ $|$ $n$ is odd$\}$.\\
+3. $p_\mathscr{I} = \{n \in N$ $|$ $n$ is odd$\}$ and $q_\mathscr{I} = \{n \in N$ $|$ $n$ is even$\}$.\\
+4. $p_\mathscr{I} = \emptyset$ and $q_\mathscr{I} = \emptyset$
+
+\subsection{Part D}
+1. $p_\mathscr{I} = \{n \in N$ $|$ $n$ is even$\}$ and $q_\mathscr{I} = \{n \in N$ $|$ $n$ is odd$\}$.\\
+2. $p_\mathscr{I} = \{n \in N$ $|$ $n$ is even$\}$ and $q_\mathscr{I} = N$.\\
+3. $p_\mathscr{I} = N$ and $q_\mathscr{I} = \{n \in N$ $|$ $n$ is odd$\}$.\\
+4. $p_\mathscr{I} = N$ and $q_\mathscr{I} = N$.
+
+\subsection{Part E}
+Let $p_\mathscr{I} = \{n \in N$ $|$ $n$ is even$\}$ and $q_\mathscr{I} = N$ then $q(s(s(zero)))$ is true but $p(s(zero))$ is false so the interpretation is a model of $F_1 \land F_2$ but not of $F_3$.
+
+\subsection{Part F}
+Since there is some model of $F_1 \land F_2$ which is not a model of $F_3$, $F_3$ is not a logical consequence of $F_1 \land F_2$.
+
+\subsection{Part G}
+The only interpretations of $p/1$ and $q/1$ which model $F_1 \land F_3$ are:\\
+1. $p_\mathscr{I} = N$ and $q_\mathscr{I} = N$.\\
+2. $p_\mathscr{I} = \{n \in N$ $|$ $n$ is even$\}$ and $q_\mathscr{I} = \{n \in N$ $|$ $n$ is odd$\}$.
+
+These interpretations for $q/1$ also model $F_2$, so any interpretation which models $F_1 \land F_3$ will also model $F_2$.
+
+\subsection{Part H}
+$F_2$ is a logical consequence of $F_1 \land F_3$ by definition of logical consequence.
+
+\section{Definite Programs}
+\subsection{Part A}
+$p_\mathscr{I} = \{(a, a)\}$ and $q_\mathscr{I} = \{(a, a)\}$.
+
+\subsection{Part B}
+1. $p_\mathscr{I} = \{(a, b), (b, c), (b, d)\}$ and $q_\mathscr{I} = \{(a, a), (b, b), (c, c), (d, d), (a, b), (b, c), (b, d), (a, c), (a, d)\}$.\\
+2. $p_\mathscr{I} = \{(a, b), (b, c), (b, d)\}$ and $q_\mathscr{I} = \{(a, a), (b, b), (c, c), (d, d), (a, b), (b, c), (b, d), (a, c), (a, d), (c, d)\}$.
+
+\subsection{Part C}
+1. $p_\mathscr{I} = \{(a, b), (b, c), (b, d)\}$ and $q_\mathscr{I} = \{(a, a), (b, b), (c, c), (d, d), (a, b), (b, c), (b, d), (a, c), (a, d)\}$.
+
+\subsection{Part D}
+Let $P$ be a definite program, it will be shown that there exists some interpretation $\mathscr{I}$ which is a model of $P$.  More specifically, it will be shown that there exists a Herbrand model of $P$.  The Herbrand base of $P$ contains all ground atomic formulas over $P$ and as such the entire set $B_P$ will be a Herbrand model of $P$.
+
+Assume that $B_P$ is not a Herbrand model of $P$.  Then there exists some clause $A_0 \leftarrow A_1, ..., A_n$ in $P$ such that all of the atoms $A_1, ..., A_n$ are true but $A_0$ is false under interpretation $\mathscr{I} = B_P$.  Then there is some ground instance of $A_0$ which is not true under $\mathscr{I}$.  But this implies that $B_P$ does not contain this ground instance of $A_0$ which contradicts the definition of a Herbrand base.
+
+$\therefore$ $B_P$ is a Herband interpretation of $P$ and $P$ has an interpretation $\blacksquare$
+
+\end{document}  
