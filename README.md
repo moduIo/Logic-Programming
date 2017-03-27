@@ -1,7 +1,7 @@
 # Logic-Programming
 CSE 505 Computing with Logic - Fall 2016 - Stony Brook University
 
-HW1 includes various logic programs, implementation of a satisfiability solver for propositional boolean formulae.
+HW1 includes various logic programs along with an implementation of a satisfiability solver for propositional boolean formulae.
 
 HW2 interpretations, models, definite programs.
 
